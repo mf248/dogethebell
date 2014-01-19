@@ -1,6 +1,10 @@
 Dogethebell::Application.routes.draw do
-  get "static_pages/home"
-  get "static_pages/faq"
+  get "shibes/new"
+
+  root 'static_pages#home'
+  match '/faq',    to: 'static_pages#faq',   via: 'get'
+  match '/contact', to: 'static_pages#contact', via: 'get'
+  match '/signup',  to: 'shibes#new', via: 'get'
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".
 
