@@ -1,4 +1,26 @@
 class ShibesController < ApplicationController
-  def new
+  
+  def show
+    @shibe = Shibe.find(params[:id])
   end
+
+  def new
+  	@shibe = Shibe.new
+  end
+
+  def create
+    @shibe = Shibe.new(shibe_params)    # Not the final implementation!
+    if @shibe.save
+      redirect_to @shibe
+    else
+      render 'new'
+    end
+  end
+
+  private
+
+    def shibe_params
+      params.require(:shibe).permit(:name, :email, :password,
+                                   :password_confirmation)
+    end
 end

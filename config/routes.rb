@@ -1,6 +1,7 @@
 Dogethebell::Application.routes.draw do
-  get "shibes/new"
+  
 
+  resources :shibes
   root 'static_pages#home'
   match '/faq',    to: 'static_pages#faq',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
