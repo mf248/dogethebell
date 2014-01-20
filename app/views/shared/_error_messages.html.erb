@@ -1,10 +1,10 @@
-<% if @user.errors.any? %>
+<% if @shibe.errors.any? %>
   <div id="error_explanation">
     <div class="alert alert-error">
-      The form contains <%= pluralize(@user.errors.count, "error") %>.
+      The form contains <%= pluralize(@shibe.errors.count, "error") %>.
     </div>
     <ul>
-    <% @user.errors.full_messages.each do |msg| %>
+    <% @shibe.errors.full_messages.each do |msg| %>
       <li>* <%= msg %></li>
     <% end %>
     </ul>
