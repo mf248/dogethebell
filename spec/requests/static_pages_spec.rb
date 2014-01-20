@@ -37,4 +37,6 @@ describe "Static pages" do
       expect(page).to have_title("Doge the Bell | Contact")
     end
   end
+
+  
 end
