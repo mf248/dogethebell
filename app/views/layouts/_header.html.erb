@@ -9,6 +9,7 @@
           	
             <ul class="nav pull-right">
               <li><%= link_to "Home",    root_path %></li>
+              <li><%= link_to "Stats", shibes_path %></li>
               <li><%= link_to "FAQ",    faq_path %></li>
               <% if signed_in? %>
                 <li><%= link_to "Shibes", '#' %></li>
@@ -18,7 +19,7 @@
                   </a>
                 <ul class="dropdown-menu">
                   <li><%= link_to "Profile", current_shibe %></li>
-                  <li><%= link_to "Settings", '#' %></li>
+                  <li><%= link_to "Settings", edit_shibe_path(current_shibe) %></li>
                   <li class="divider"></li>
                   <li>
                     <%= link_to "Sign out", signout_path, method: "delete" %>

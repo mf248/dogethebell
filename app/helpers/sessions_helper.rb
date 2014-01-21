@@ -19,10 +19,23 @@ module SessionsHelper
     @current_shibe ||= Shibe.find_by(remember_token: remember_token)
   end
 
+  def current_shibe?(shibe)
+    shibe == current_shibe
+  end
+
   def sign_out
     current_shibe.update_attribute(:remember_token,
                                   Shibe.encrypt(Shibe.new_remember_token))
     cookies.delete(:remember_token)
     self.current_shibe = nil
+  end
+
+  def redirect_back_or(default)
+    redirect_to(session[:return_to] || default)
+    session.delete(:return_to)
+  end
+
+  def store_location
+    session[:return_to] = request.url if request.get?
   end
 end

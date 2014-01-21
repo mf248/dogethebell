@@ -1,0 +1,10 @@
+<% provide(:title, 'Stats') %>
+<h1>Stats</h1>
+
+<ul class="users">
+  <% @shibes.each do |shibe| %>
+    <li>
+      <%= link_to shibe.name, shibe %>
+    </li>
+  <% end %>
+</ul>
