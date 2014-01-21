@@ -40,6 +40,15 @@ describe "Shibe pages" do
       it "should create a shibe" do
         expect { click_button submit }.to change(Shibe, :count).by(1)
       end
+
+      describe "after saving the user" do
+        before { click_button submit }
+        let(:shibe) { Shibe.find_by(email: 'shibe@example.com') }
+
+        it { should have_link('Sign out') }
+        it { should have_title(shibe.name) }
+        it { should have_selector('div.alert.alert-success', text: 'Such Welcome.') }
+      end
     end
   end
 end

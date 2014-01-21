@@ -11,6 +11,7 @@ class ShibesController < ApplicationController
   def create
     @shibe = Shibe.new(shibe_params)    # Not the final implementation!
     if @shibe.save
+      sign_in @shibe
       flash[:success] = "Wow.  Such Welcome.  So Taco."
       redirect_to @shibe
     else

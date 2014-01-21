@@ -1,8 +1,11 @@
 Dogethebell::Application.routes.draw do
   
-
+  resources :sessions, only: [:new, :create, :destroy]
   resources :shibes
+
   root 'static_pages#home'
+  match '/signin',  to: 'sessions#new',       via: 'get'
+  match '/signout', to: 'sessions#destroy',   via: 'delete'
   match '/faq',    to: 'static_pages#faq',   via: 'get'
   match '/contact', to: 'static_pages#contact', via: 'get'
   match '/signup',  to: 'shibes#new', via: 'get'
