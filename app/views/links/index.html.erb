@@ -1,0 +1,11 @@
+<% provide(:title, 'Links') %>
+<h1>Links</h1>
+
+
+      <ol class="microposts">
+        	<% @links.each do |link| %>
+    			<li> <a href= <%= link.address %> > <%= link.title %> </a> </li>
+  			<% end %>
+      </ol>
+    </li>
+  

@@ -82,6 +82,14 @@ describe "Authentication" do
           specify { expect(response).to redirect_to(signin_path) }
         end
       end
+
+      describe "in the links controller" do
+
+        describe "submitting to the create action" do
+          before { post links_path }
+          specify { expect(response).to redirect_to(signin_path) }
+        end
+      end
     end
     describe "as wrong shibe" do
       let(:shibe) { FactoryGirl.create(:shibe) }

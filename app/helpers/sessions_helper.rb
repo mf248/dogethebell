@@ -23,6 +23,13 @@ module SessionsHelper
     shibe == current_shibe
   end
 
+  def signed_in_shibe
+    unless signed_in?
+      store_location
+      redirect_to signin_url, notice: "Please sign in."
+    end
+  end
+
   def sign_out
     current_shibe.update_attribute(:remember_token,
                                   Shibe.encrypt(Shibe.new_remember_token))

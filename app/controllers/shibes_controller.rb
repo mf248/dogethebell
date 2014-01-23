@@ -4,7 +4,10 @@ class ShibesController < ApplicationController
 
   def show
     @shibe = Shibe.find(params[:id])
+    @links = @shibe.links
+    @link = current_shibe.links.build if  signed_in?
   end
+
 
   def new
   	@shibe = Shibe.new

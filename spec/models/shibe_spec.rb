@@ -16,6 +16,7 @@ describe Shibe do
   it { should respond_to(:password_confirmation) }
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
+  it { should respond_to(:links) }
 
   it { should be_valid }
 
@@ -102,6 +103,21 @@ describe Shibe do
   describe "remember token" do
     before { @shibe.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "link associations" do
+    
+    before { @shibe.save }
+    let!(:older_link) do
+      FactoryGirl.create(:link, shibe: @shibe, created_at: 1.day.ago)
+    end
+    let!(:newer_link) do
+      FactoryGirl.create(:link, shibe: @shibe, created_at: 1.hour.ago)
+    end
+
+    it "should have the right links in the right order" do
+      expect(@shibe.links.to_a).to eq [newer_link, older_link]
+    end
   end
 end
 

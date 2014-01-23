@@ -1,4 +1,15 @@
 <% provide(:title, @shibe.name) %>
+<% if signed_in? %>
+  <div class="row">
+    <aside class="span4">
+      <section>
+        <%= render 'shared/link_form' %>
+      </section>
+    </aside>
+  </div>
+
+<% else %>
+<% end %>
 <div class="row">
   <aside class="span4">
     <section>
@@ -8,4 +19,14 @@
       </h1>
     </section>
   </aside>
+  <div class="span8">
+    <% if @shibe.links.any? %>
+      <h3>Links (<%= @shibe.links.count %>)</h3>
+      <ol class="microposts">
+        	<% @links.each do |link| %>
+    			<li> <a href= <%= link.address %> > <%= link.title %> </a> </li>
+  			<% end %>
+      </ol>
+    <% end %>
+  </div>
 </div>

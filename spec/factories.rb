@@ -5,4 +5,10 @@ FactoryGirl.define do
     password "foobar"
     password_confirmation "foobar"
   end
+
+  factory :link do
+  	title "google"
+  	address "google.com"
+  	shibe
+  end
 end

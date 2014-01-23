@@ -106,5 +106,22 @@ describe "Shibe pages" do
       specify { expect(shibe.reload.email).to eq new_email }
     end
   end
+
+  describe "profile page" do
+    let(:shibe) { FactoryGirl.create(:shibe) }
+    let!(:l1) { FactoryGirl.create(:link, shibe: shibe, title: "Foo", address: "google.com") }
+    let!(:l2) { FactoryGirl.create(:link, shibe: shibe, title: "Bar", address: "yahoo.com") }
+
+    before { visit shibe_path(shibe) }
+
+    it { should have_content(shibe.name) }
+    it { should have_title(shibe.name) }
+
+    describe "links" do
+      it { should have_content(l1.title) }
+      it { should have_content(l2.title)}
+      it { should have_content(shibe.links.count) }
+    end
+  end
 end
 

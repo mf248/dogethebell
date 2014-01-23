@@ -1,0 +1,9 @@
+<%= form_for(@link) do |f| %>
+  <%= render 'shared/error_messages', object: f.object %>
+  <div class="field">
+    <%= f.text_area :title, placeholder: "Title for your link..." %>
+
+    <%= f.text_area :address, placeholder: "Address for your link..." %>
+  </div>
+  <%= f.submit "Post", class: "btn btn-large btn-primary" %>
+<% end %>

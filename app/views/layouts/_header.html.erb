@@ -11,8 +11,9 @@
               <li><%= link_to "Home",    root_path %></li>
               <li><%= link_to "Stats", shibes_path %></li>
               <li><%= link_to "FAQ",    faq_path %></li>
+              <li><%= link_to "Links", links_path %></li>
               <% if signed_in? %>
-                <li><%= link_to "Shibes", '#' %></li>
+                
                 <li id="fat-menu" class="dropdown">
                   <a href="#" class="dropdown-toggle" data-toggle="dropdown">
                     Account <b class="caret"></b>

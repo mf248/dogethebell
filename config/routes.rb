@@ -1,5 +1,5 @@
 Dogethebell::Application.routes.draw do
-  
+  resources :links, only: [:create, :index]
   resources :sessions, only: [:new, :create, :destroy]
   resources :shibes
 
